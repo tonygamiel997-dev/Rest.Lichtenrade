@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,11 +61,9 @@
   }
   button{font-family:inherit;cursor:pointer;}
 
-  /* ===== visually-hidden ===== */
   .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
   :focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
 
-  /* ===== HEADER ===== */
   header{
     position:sticky;top:0;z-index:60;
     background:rgba(247,240,227,0.94);
@@ -139,7 +137,6 @@
   .hamburger{display:none;background:none;border:none;padding:6px;}
   .hamburger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;}
 
-  /* ===== HERO ===== */
   .hero{
     background:
       radial-gradient(ellipse at 15% 15%, rgba(201,154,68,0.14), transparent 45%),
@@ -192,6 +189,7 @@
     font-family:'Space Mono',monospace;
     font-size:0.76rem;
     color:rgba(247,240,227,0.65);
+    flex-wrap:wrap;
   }
   .hero-meta div b{display:block;color:var(--cream);font-size:0.86rem;margin-bottom:4px;font-family:'Work Sans',sans-serif;font-weight:600;}
 
@@ -205,7 +203,6 @@
   }
   .hero-plate svg{width:78%;height:78%;}
 
-  /* ===== SECTION shells ===== */
   section{padding:104px 0;}
   .section-head{
     display:flex;justify-content:space-between;align-items:flex-end;
@@ -214,7 +211,6 @@
   .section-head h2{font-size:clamp(2.1rem,3.6vw,3rem);margin-top:10px;}
   .section-head p{max-width:44ch;color:var(--ink-soft);line-height:1.6;font-size:0.98rem;}
 
-  /* ===== MENU ===== */
   .menu-tabs{
     display:flex;gap:10px;margin-bottom:44px;flex-wrap:wrap;
   }
@@ -263,7 +259,6 @@
   }
   .add-plain:hover{background:var(--ink);color:var(--cream);}
 
-  /* ===== RESERVATION ===== */
   .reserve{
     background:var(--forest);color:var(--cream);
   }
@@ -324,9 +319,8 @@
     border-top:1px dashed var(--line);border-bottom:1px dashed var(--line);
     padding:16px 0;
   }
-  .confirm-detail div{display:flex;justify-content:space-between;padding:4px 0;}
+  .confirm-detail div{display:flex;justify-content:space-between;padding:4px 0;gap:14px;}
 
-  /* ===== ORDER SECTION ===== */
   .order-layout{display:grid;grid-template-columns:1.3fr 0.9fr;gap:48px;align-items:start;}
   .order-picker .menu-tabs{margin-bottom:30px;}
   .order-list{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);}
@@ -339,7 +333,6 @@
   .order-row-cat{font-family:'Space Mono',monospace;font-size:0.66rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;margin-top:3px;}
   .order-row-price{font-family:'Space Mono',monospace;color:var(--wine);font-weight:700;min-width:64px;text-align:right;}
 
-  /* ticket / receipt cart */
   .ticket{
     position:sticky;top:110px;
     background:#fffdf8;
@@ -353,7 +346,6 @@
     background:
       radial-gradient(circle at 10px 0, transparent 7px, #fffdf8 7px) top left / 20px 14px repeat-x;
   }
-  .ticket-notch.bottom{transform:rotate(180deg);}
   .ticket-body{padding:26px 26px 8px;}
   .ticket-head{text-align:center;margin-bottom:18px;}
   .ticket-head .t-title{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;font-weight:600;}
@@ -377,7 +369,6 @@
   .ticket-item .ti-ctrls{display:flex;align-items:center;gap:8px;color:var(--ink-soft);}
   .ticket-item .ti-ctrls button{background:none;border:1px solid var(--line);width:18px;height:18px;font-size:0.7rem;line-height:1;border-radius:3px;}
   .ticket-item .ti-price{white-space:nowrap;font-weight:700;}
-  .ticket-remove{background:none;border:none;color:var(--wine);font-size:0.68rem;text-decoration:underline;padding:0;margin-top:2px;text-align:left;}
   .ticket-totals{border-top:1px dashed var(--line);margin-top:10px;padding:14px 0;font-size:0.82rem;}
   .ticket-totals div{display:flex;justify-content:space-between;padding:3px 0;}
   .ticket-totals .grand{font-weight:700;font-size:1rem;border-top:1px dashed var(--line);margin-top:8px;padding-top:10px;}
@@ -393,7 +384,6 @@
     opacity:0.75;
   }
 
-  /* ===== REVIEWS ===== */
   .review-summary-bar{
     display:flex;align-items:center;gap:22px;margin-bottom:50px;flex-wrap:wrap;
   }
@@ -417,7 +407,6 @@
   .review-who .name{font-weight:600;font-size:0.86rem;}
   .review-who .meta{font-size:0.74rem;color:var(--ink-soft);font-family:'Space Mono',monospace;}
 
-  /* ===== ABOUT ===== */
   .about{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
   .about-copy p{line-height:1.75;color:var(--ink-soft);font-size:1rem;margin-bottom:18px;}
   .about-visual{
@@ -430,7 +419,6 @@
   }
   .about-visual svg{position:absolute;bottom:0;left:0;width:100%;}
 
-  /* ===== FOOTER ===== */
   footer{background:var(--forest-dk);color:rgba(247,240,227,0.75);padding:70px 0 30px;}
   .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px;padding-bottom:50px;border-bottom:1px solid rgba(247,240,227,0.12);}
   .foot-grid h5{
@@ -443,7 +431,6 @@
   }
   .foot-brand{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;color:var(--cream);margin-bottom:14px;}
 
-  /* ===== CART DRAWER (mobile-accessible quick view) ===== */
   .drawer-overlay{
     position:fixed;inset:0;background:rgba(28,20,16,0.5);z-index:90;
     opacity:0;pointer-events:none;transition:opacity .25s ease;
@@ -460,11 +447,11 @@
   .drawer-close{background:none;border:none;font-size:1.4rem;line-height:1;}
   .drawer-body{overflow-y:auto;flex:1;}
 
-  /* toast */
   .toast{
     position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);
     background:var(--ink);color:var(--cream);padding:13px 22px;border-radius:40px;
     font-size:0.85rem;z-index:200;opacity:0;pointer-events:none;transition:all .25s ease;
+    max-width:90vw;text-align:center;
   }
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
@@ -497,39 +484,38 @@
     <div class="brand">Ristorante <span>Sole</span></div>
     <nav>
       <ul class="nav-links">
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#reserve">Reservations</a></li>
-        <li><a href="#order">Order</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#menu">Speisekarte</a></li>
+        <li><a href="#reserve">Reservierung</a></li>
+        <li><a href="#order">Bestellen</a></li>
+        <li><a href="#reviews">Bewertungen</a></li>
+        <li><a href="#contact">Kontakt</a></li>
       </ul>
     </nav>
     <div class="nav-actions">
-      <button class="cart-btn" id="cartOpenBtn" aria-label="Open your order">
+      <button class="cart-btn" id="cartOpenBtn" aria-label="Bestellung öffnen">
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#1C1410" stroke-width="1.6"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9.5" cy="20.5" r="1.2" fill="#1C1410" stroke="none"/><circle cx="17.5" cy="20.5" r="1.2" fill="#1C1410" stroke="none"/></svg>
         <span class="cart-count vh" id="cartCount">0</span>
       </button>
-      <a href="#reserve" class="btn btn-wine">Book a table</a>
-      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <a href="#reserve" class="btn btn-wine">Tisch reservieren</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
 
-<!-- ===== HERO ===== -->
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <div class="rating-badge">★ <b>4.7</b> &nbsp;·&nbsp; 938 Google reviews &nbsp;·&nbsp; €20–30 pp</div>
-      <h1>Wood-fired pizza,<br><em>fatto con amore.</em></h1>
-      <p class="lede">A neighbourhood trattoria in Tempelhof-Schöneberg — hand-stretched Napoli pizza, fresh pasta and a kitchen that hasn't stopped smiling since it opened. Reserve a table or get dinner sent to your door.</p>
+      <div class="rating-badge">★ <b>4,7</b> &nbsp;·&nbsp; 938 Google-Bewertungen &nbsp;·&nbsp; 20–30 € p.P.</div>
+      <h1>Pizza aus dem<br>Holzofen, <em>fatto con amore.</em></h1>
+      <p class="lede">Eine Nachbarschafts-Trattoria in Tempelhof-Schöneberg — handgezogene Pizza Napoli, frische Pasta und eine Küche, die seit der Eröffnung nicht aufgehört hat zu lächeln. Reservieren Sie einen Tisch oder lassen Sie sich das Essen nach Hause bringen.</p>
       <div class="hero-ctas">
-        <a href="#reserve" class="btn btn-gold">Reserve a table</a>
-        <a href="#order" class="btn btn-ghost-cream">Order pickup or delivery</a>
+        <a href="#reserve" class="btn btn-gold">Tisch reservieren</a>
+        <a href="#order" class="btn btn-ghost-cream">Abholung oder Lieferung bestellen</a>
       </div>
       <div class="hero-meta">
         <div><b>Lichtenrader Damm 67</b>12305 Berlin</div>
-        <div><b>030 89740395</b>Call the kitchen</div>
-        <div><b>Closed Wednesdays</b>Opens 4pm Thursdays</div>
+        <div><b>030 89740395</b>Küche anrufen</div>
+        <div><b>Mittwochs geschlossen</b>Donnerstags ab 16 Uhr geöffnet</div>
       </div>
     </div>
     <div class="hero-plate">
@@ -548,15 +534,14 @@
   </div>
 </section>
 
-<!-- ===== ABOUT ===== -->
 <section id="about">
   <div class="wrap about">
     <div class="about-copy">
-      <div class="eyebrow">About the house</div>
-      <h2 style="font-size:clamp(1.9rem,3vw,2.6rem);margin:16px 0 22px;">Family-run since day one</h2>
-      <p>Sole is the kind of place guests come back to on purpose — regulars know the servers by name, and the servers know exactly how you like your carbonara. Guests consistently mention the warmth of the team as much as the food itself, with several reviewers singling out how attentive and genuinely friendly the staff are, visit after visit.</p>
-      <p>The dining room fills up around a bright sunroom that guests often ask for by name, and the kitchen keeps a rotating list of daily specials alongside the classics — the Pizza Napoli and Pizza Crudaiola are the two dishes people order again and again.</p>
-      <a href="#menu" class="btn btn-line">See the full menu</a>
+      <div class="eyebrow">Über das Haus</div>
+      <h2 style="font-size:clamp(1.9rem,3vw,2.6rem);margin:16px 0 22px;">Familiengeführt von Anfang an</h2>
+      <p>Sole ist die Art von Ort, an den Gäste bewusst zurückkehren — Stammgäste kennen die Kellner beim Namen, und die Kellner wissen genau, wie man die Carbonara mag. Immer wieder wird die Herzlichkeit des Teams genauso oft erwähnt wie das Essen selbst — mehrere Bewertungen heben besonders hervor, wie aufmerksam und freundlich das Personal bei jedem Besuch ist.</p>
+      <p>Das Restaurant füllt sich um einen hellen Wintergarten, nach dem Gäste oft ausdrücklich fragen, und die Küche führt neben den Klassikern eine wechselnde Liste an Tagesgerichten — die Pizza Napoli und die Pizza Crudaiola sind die zwei Gerichte, die immer wieder bestellt werden.</p>
+      <a href="#menu" class="btn btn-line">Zur ganzen Speisekarte</a>
     </div>
     <div class="about-visual">
       <div class="oven-glow"></div>
@@ -567,15 +552,14 @@
   </div>
 </section>
 
-<!-- ===== MENU ===== -->
 <section id="menu" style="background:var(--cream-dk);">
   <div class="wrap">
     <div class="section-head">
       <div>
         <div class="eyebrow">La carta</div>
-        <h2>The menu</h2>
+        <h2>Die Speisekarte</h2>
       </div>
-      <p>A working menu built from Sole's known favourites — the kitchen's full seasonal list is available in-house and by phone. Add anything below straight to an online order.</p>
+      <p>Eine Arbeitsversion der Speisekarte, zusammengestellt aus Soles bekannten Favoriten — die vollständige, saisonale Karte gibt es im Restaurant und am Telefon. Fügen Sie unten direkt etwas zu einer Online-Bestellung hinzu.</p>
     </div>
 
     <div class="menu-tabs" id="menuTabs"></div>
@@ -583,13 +567,12 @@
   </div>
 </section>
 
-<!-- ===== RESERVATIONS ===== -->
 <section id="reserve" class="reserve">
   <div class="wrap">
     <div>
-      <div class="eyebrow" style="color:var(--gold);">Book ahead</div>
-      <h2>Reserve your table</h2>
-      <p style="color:rgba(247,240,227,0.72);line-height:1.65;margin-top:16px;max-width:42ch;">Tables go quickly on weekends, especially in the sunroom. Tell us when you'd like to come and we'll hold the request for you.</p>
+      <div class="eyebrow" style="color:var(--gold);">Jetzt buchen</div>
+      <h2>Reservieren Sie Ihren Tisch</h2>
+      <p style="color:rgba(247,240,227,0.72);line-height:1.65;margin-top:16px;max-width:42ch;">An Wochenenden sind die Tische schnell vergeben, besonders im Wintergarten. Teilen Sie uns mit, wann Sie kommen möchten — wir merken uns Ihre Anfrage vor.</p>
       <ul class="info-list">
         <li>
           <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="#C99A44" stroke-width="1.5"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 12 2.5a7 7 0 0 1 7 7C19 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
@@ -597,47 +580,47 @@
         </li>
         <li>
           <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="#C99A44" stroke-width="1.5"><path d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1.2 1.2 0 0 1 1.2-.3c1.3.4 2.7.6 4.1.6a1.2 1.2 0 0 1 1.2 1.2V20a1.2 1.2 0 0 1-1.2 1.2C10.6 21.2 2.8 13.4 2.8 3.2A1.2 1.2 0 0 1 4 2h3.3a1.2 1.2 0 0 1 1.2 1.2c0 1.4.2 2.8.6 4.1a1.2 1.2 0 0 1-.3 1.2Z"/></svg>
-          <div><b>030 89740395</b>Call for same-day bookings</div>
+          <div><b>030 89740395</b>Für Reservierungen am selben Tag anrufen</div>
+        </li>
+        <li>
+          <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="#C99A44" stroke-width="1.5"><path d="M4 4l16 16M20 4 4 20" stroke-width="0"/><path d="M22 6.5 12 13 2 6.5"/><rect x="2" y="4.5" width="20" height="15" rx="1.5"/></svg>
+          <div><b>tonygamiel997@gmail.com</b>Für Anfragen per E-Mail</div>
         </li>
         <li>
           <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="#C99A44" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
-          <div><b>Closed Wednesdays</b>Opens from 4pm on Thursdays — other days by phone or request below</div>
-        </li>
-        <li>
-          <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="#C99A44" stroke-width="1.5"><path d="M4 4h16v13H7l-3 3V4Z"/></svg>
-          <div><b>4.7 out of 5</b>From 938 diners on Google</div>
+          <div><b>Mittwochs geschlossen</b>Donnerstags ab 16 Uhr geöffnet — andere Tage telefonisch oder per Anfrage unten</div>
         </li>
       </ul>
     </div>
 
     <div class="form-card" id="reserveCard">
-     <form id="reserveForm" action="tonygamiel997@gmail.com" method="post" enctype="text/plain">
+      <form id="reserveForm">
         <div class="section-head" style="margin-bottom:26px;">
-          <h3 style="font-size:1.3rem;">Table request</h3>
+          <h3 style="font-size:1.3rem;">Tischanfrage</h3>
         </div>
         <div class="form-row">
           <div class="field">
-            <label for="rName">Full name</label>
+            <label for="rName">Vollständiger Name</label>
             <input id="rName" type="text" required placeholder="Anna Rossi">
           </div>
           <div class="field">
-            <label for="rPhone">Phone</label>
+            <label for="rPhone">Telefon</label>
             <input id="rPhone" type="tel" required placeholder="030 000 0000">
           </div>
         </div>
         <div class="field">
-          <label for="rEmail">Email</label>
-          <input id="rEmail" type="email" required placeholder="you@email.com">
+          <label for="rEmail">E-Mail</label>
+          <input id="rEmail" type="email" required placeholder="sie@email.com">
         </div>
         <div class="form-row">
           <div class="field">
-            <label for="rDate">Date</label>
+            <label for="rDate">Datum</label>
             <input id="rDate" type="date" required>
           </div>
           <div class="field">
-            <label for="rTime">Time</label>
+            <label for="rTime">Uhrzeit</label>
             <select id="rTime" required>
-              <option value="">Select</option>
+              <option value="">Bitte wählen</option>
               <option>16:00</option><option>16:30</option><option>17:00</option>
               <option>17:30</option><option>18:00</option><option>18:30</option>
               <option>19:00</option><option>19:30</option><option>20:00</option>
@@ -646,7 +629,7 @@
           </div>
         </div>
         <div class="field">
-          <label>Guests</label>
+          <label>Gäste</label>
           <div class="stepper">
             <button type="button" id="guestMinus">−</button>
             <span class="snum" id="guestNum">2</span>
@@ -654,25 +637,24 @@
           </div>
         </div>
         <div class="field">
-          <label for="rNotes">Notes (optional)</label>
-          <textarea id="rNotes" rows="3" placeholder="Window seat, allergy, celebration..."></textarea>
+          <label for="rNotes">Anmerkungen (optional)</label>
+          <textarea id="rNotes" rows="3" placeholder="Fensterplatz, Allergie, Feier..."></textarea>
         </div>
-        <button type="submit" class="btn btn-wine btn-full">Request table</button>
-        <p class="form-note">This sends a request — Sole will confirm by phone or email shortly after. For anything urgent, call 030 89740395 directly.</p>
+        <button type="submit" class="btn btn-wine btn-full">Tisch anfragen</button>
+        <p class="form-note">Dies sendet eine Anfrage per E-Mail an das Restaurant — Sole bestätigt Ihnen kurzfristig per Telefon oder E-Mail. Für dringende Anliegen rufen Sie bitte direkt unter 030 89740395 an.</p>
       </form>
     </div>
   </div>
 </section>
 
-<!-- ===== ORDER ===== -->
 <section id="order">
   <div class="wrap">
     <div class="section-head">
       <div>
-        <div class="eyebrow">Kitchen to door</div>
-        <h2>Order online</h2>
+        <div class="eyebrow">Von der Küche zur Tür</div>
+        <h2>Online bestellen</h2>
       </div>
-      <p>Build your order from the menu, choose pickup or delivery, and check out — your ticket updates on the right as you go.</p>
+      <p>Stellen Sie Ihre Bestellung aus der Speisekarte zusammen, wählen Sie Abholung oder Lieferung, und schließen Sie ab — Ihr Bon aktualisiert sich rechts, während Sie bestellen.</p>
     </div>
 
     <div class="order-layout">
@@ -686,59 +668,57 @@
   </div>
 </section>
 
-<!-- ===== REVIEWS ===== -->
 <section id="reviews" style="background:var(--cream-dk);">
   <div class="wrap">
     <div class="section-head">
       <div>
-        <div class="eyebrow">What guests say</div>
-        <h2>938 reviews, 4.7 average</h2>
+        <div class="eyebrow">Was Gäste sagen</div>
+        <h2>938 Bewertungen, 4,7 im Schnitt</h2>
       </div>
     </div>
     <div class="review-summary-bar">
-      <div class="score">4.7</div>
+      <div class="score">4,7</div>
       <div>
         <div class="stars">★★★★★</div>
-        <div style="font-size:0.82rem;color:var(--ink-soft);margin-top:4px;">Based on 938 Google reviews</div>
+        <div style="font-size:0.82rem;color:var(--ink-soft);margin-top:4px;">Basierend auf 938 Google-Bewertungen</div>
       </div>
     </div>
     <div class="tag-row">
-      <span class="tag-chip">italian · 76</span>
+      <span class="tag-chip">italienisch · 76</span>
       <span class="tag-chip">carbonara · 17</span>
-      <span class="tag-chip">kid-friendly · 12</span>
-      <span class="tag-chip">sunroom · 5</span>
+      <span class="tag-chip">kinderfreundlich · 12</span>
+      <span class="tag-chip">wintergarten · 5</span>
     </div>
 
     <div class="review-grid" style="margin-top:40px;">
       <div class="review-card">
         <div class="stars">★★★★★</div>
-        <p>"The service was amazing, the man that served us was very attentive. The carbonara wasn't as creamy as I expected, but overall the food tasted and looked great."</p>
+        <p>„Der Service war großartig, der Kellner, der uns bedient hat, war sehr aufmerksam. Die Carbonara war nicht ganz so cremig wie erwartet, aber insgesamt hat das Essen hervorragend geschmeckt und ausgesehen."</p>
         <div class="review-who">
           <span class="name">Júlia Domingo</span>
-          <span class="meta">7 reviews · 3 mo ago</span>
+          <span class="meta">7 Bewertungen · vor 3 Monaten</span>
         </div>
       </div>
       <div class="review-card">
         <div class="stars">★★★★★</div>
-        <p>"A fantastic restaurant. We had a 14:15 reservation, met friends for a few beers and pizza, and it was exactly the relaxed afternoon we wanted."</p>
+        <p>„Ein fantastisches Restaurant. Wir hatten eine Reservierung um 14:15 Uhr, trafen Freunde auf ein paar Bier und Pizza — genau der entspannte Nachmittag, den wir wollten."</p>
         <div class="review-who">
           <span class="name">Terence Hill</span>
-          <span class="meta">Local Guide · 811 reviews</span>
+          <span class="meta">Local Guide · 811 Bewertungen</span>
         </div>
       </div>
       <div class="review-card">
         <div class="stars">★★★★★</div>
-        <p>"Very nice, fresh food — the staff are polite and positive with a smile, and the service felt properly Italian from start to finish."</p>
+        <p>„Sehr frisches, gutes Essen — das Personal ist höflich und positiv mit einem Lächeln, der Service fühlte sich von Anfang bis Ende typisch italienisch an."</p>
         <div class="review-who">
           <span class="name">Vegim Kamberi</span>
-          <span class="meta">10 mo ago</span>
+          <span class="meta">vor 10 Monaten</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER / CONTACT ===== -->
 <footer id="contact">
   <div class="wrap">
     <div class="foot-grid">
@@ -747,41 +727,40 @@
         <p>Lichtenrader Damm 67<br>12305 Berlin<br>Tempelhof-Schöneberg</p>
       </div>
       <div>
-        <h5>Contact</h5>
+        <h5>Kontakt</h5>
         <ul>
           <li><a href="tel:03089740395">030 89740395</a></li>
+          <li><a href="mailto:tonygamiel997@gmail.com">tonygamiel997@gmail.com</a></li>
           <li><a href="https://ristorante-sole.de" target="_blank" rel="noopener">ristorante-sole.de</a></li>
-          <li><a href="https://maps.app.goo.gl/RPCL2mPsNr5pvXeq6" target="_blank" rel="noopener">Get directions</a></li>
-          <li><a> href="tonygamiel@gmail.com"</a></li>
+          <li><a href="https://maps.app.goo.gl/RPCL2mPsNr5pvXeq6" target="_blank" rel="noopener">Route anzeigen</a></li>
         </ul>
       </div>
       <div>
-        <h5>Hours</h5>
-        <p>Closed Wednesdays<br>Thu–Tue: from 4pm<br>Lunch hours by phone</p>
+        <h5>Öffnungszeiten</h5>
+        <p>Mittwochs geschlossen<br>Do–Di: ab 16 Uhr<br>Mittagszeiten auf Anfrage</p>
       </div>
       <div>
-        <h5>Quick links</h5>
+        <h5>Schnellzugriff</h5>
         <ul>
-          <li><a href="#menu">Menu</a></li>
-          <li><a href="#reserve">Reservations</a></li>
-          <li><a href="#order">Order online</a></li>
-          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#menu">Speisekarte</a></li>
+          <li><a href="#reserve">Reservierung</a></li>
+          <li><a href="#order">Online bestellen</a></li>
+          <li><a href="#reviews">Bewertungen</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 Ristorante Sole, Berlin</span>
-      <span>4.7 ★ · 938 Google reviews · €20–30 per person</span>
+      <span>4,7 ★ · 938 Google-Bewertungen · 20–30 € pro Person</span>
     </div>
   </div>
 </footer>
 
-<!-- ===== CART DRAWER ===== -->
 <div class="drawer-overlay" id="drawerOverlay"></div>
 <div class="drawer" id="drawer">
   <div class="drawer-head">
-    <strong>Your order</strong>
-    <button class="drawer-close" id="drawerClose" aria-label="Close">×</button>
+    <strong>Ihre Bestellung</strong>
+    <button class="drawer-close" id="drawerClose" aria-label="Schließen">×</button>
   </div>
   <div class="drawer-body" id="drawerBody"></div>
 </div>
@@ -789,32 +768,39 @@
 <div class="toast" id="toast"></div>
 
 <script>
+/* ============ EMAIL TARGET ============ */
+const RESTAURANT_EMAIL = 'tonygamiel997@gmail.com';
+function openMailto(subject, bodyLines){
+  const url = `mailto:${RESTAURANT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+  window.location.href = url;
+}
+
 /* ============ DATA ============ */
 const MENU = [
-  {id:'p1', cat:'Pizza', name:'Pizza Napoli', price:12.5, desc:'Tomato, mozzarella, anchovies, oregano, capers — a Sole favourite.', popular:true},
-  {id:'p2', cat:'Pizza', name:'Pizza Crudaiola', price:13.5, desc:'San Marzano tomato base topped fresh out of the oven with rocket, cherry tomato, burrata and grana.', popular:true},
-  {id:'p3', cat:'Pizza', name:'Pizza Margherita', price:10.5, desc:'Tomato, fior di latte mozzarella, basil, olive oil.'},
-  {id:'p4', cat:'Pizza', name:'Pizza Diavola', price:12.0, desc:'Tomato, mozzarella, spicy salami, chilli oil.'},
-  {id:'a1', cat:'Antipasti', name:'Vitello Tonnato', price:14.0, desc:'Thin-sliced veal, tuna-caper cream, capers, rocket — one of the most-ordered starters.', popular:true},
-  {id:'a2', cat:'Antipasti', name:'Bruschetta', price:7.5, desc:'Grilled sourdough, San Marzano tomato, garlic, basil, olive oil.'},
-  {id:'a3', cat:'Antipasti', name:'Burrata e Prosciutto', price:13.0, desc:'Creamy burrata, San Daniele prosciutto, toasted bread.'},
-  {id:'pa1', cat:'Pasta', name:'Spaghetti alla Carbonara', price:13.5, desc:'Guanciale, egg yolk, pecorino, black pepper — a house classic guests keep coming back for.'},
-  {id:'pa2', cat:'Pasta', name:'Tagliatelle al Ragù', price:14.5, desc:'Fresh tagliatelle, slow-cooked beef ragù, parmigiano.'},
-  {id:'pa3', cat:'Pasta', name:'Tagliatelle ai Funghi', price:13.5, desc:'Fresh tagliatelle, wild mushrooms, garlic, parsley, cream.'},
-  {id:'d1', cat:'Dolci', name:'Tiramisù', price:6.5, desc:'Made in-house daily — espresso, mascarpone, cocoa.'},
-  {id:'d2', cat:'Dolci', name:'Panna Cotta', price:6.0, desc:'Vanilla bean panna cotta, seasonal berry coulis.'},
+  {id:'p1', cat:'Pizza', name:'Pizza Napoli', price:12.5, desc:'Tomate, Mozzarella, Sardellen, Oregano, Kapern — ein Sole-Favorit.', popular:true},
+  {id:'p2', cat:'Pizza', name:'Pizza Crudaiola', price:13.5, desc:'Sauce aus San-Marzano-Tomaten, frisch aus dem Ofen belegt mit Rucola, Kirschtomaten, Burrata und Grana.', popular:true},
+  {id:'p3', cat:'Pizza', name:'Pizza Margherita', price:10.5, desc:'Tomate, Fior-di-Latte-Mozzarella, Basilikum, Olivenöl.'},
+  {id:'p4', cat:'Pizza', name:'Pizza Diavola', price:12.0, desc:'Tomate, Mozzarella, scharfe Salami, Chiliöl.'},
+  {id:'a1', cat:'Antipasti', name:'Vitello Tonnato', price:14.0, desc:'Dünn geschnittenes Kalbfleisch, Thunfisch-Kapern-Creme, Kapern, Rucola — eine der meistbestellten Vorspeisen.', popular:true},
+  {id:'a2', cat:'Antipasti', name:'Bruschetta', price:7.5, desc:'Gegrilltes Sauerteigbrot, San-Marzano-Tomate, Knoblauch, Basilikum, Olivenöl.'},
+  {id:'a3', cat:'Antipasti', name:'Burrata e Prosciutto', price:13.0, desc:'Cremige Burrata, San-Daniele-Schinken, geröstetes Brot.'},
+  {id:'pa1', cat:'Pasta', name:'Spaghetti alla Carbonara', price:13.5, desc:'Guanciale, Eigelb, Pecorino, schwarzer Pfeffer — ein Hausklassiker, zu dem Gäste immer wieder zurückkehren.'},
+  {id:'pa2', cat:'Pasta', name:'Tagliatelle al Ragù', price:14.5, desc:'Frische Tagliatelle, langsam geschmortes Rinder-Ragù, Parmigiano.'},
+  {id:'pa3', cat:'Pasta', name:'Tagliatelle ai Funghi', price:13.5, desc:'Frische Tagliatelle, Waldpilze, Knoblauch, Petersilie, Sahne.'},
+  {id:'d1', cat:'Dolci', name:'Tiramisù', price:6.5, desc:'Täglich hausgemacht — Espresso, Mascarpone, Kakao.'},
+  {id:'d2', cat:'Dolci', name:'Panna Cotta', price:6.0, desc:'Vanille-Panna-Cotta mit saisonalem Beerencoulis.'},
 ];
-const CATS = ['All','Pizza','Antipasti','Pasta','Dolci'];
+const CATS = ['Alle','Pizza','Antipasti','Pasta','Dolci'];
 
 /* ============ STATE ============ */
-let cart = {}; // id -> qty
-let activeMenuCat = 'All';
-let activeOrderCat = 'All';
-let fulfillment = 'pickup'; // or delivery
+let cart = {};
+let activeMenuCat = 'Alle';
+let activeOrderCat = 'Alle';
+let fulfillment = 'pickup';
 const DELIVERY_FEE = 3.5;
 
 /* ============ HELPERS ============ */
-const euro = n => '€' + n.toFixed(2);
+const euro = n => n.toFixed(2).replace('.', ',') + ' €';
 function toast(msg){
   const t = document.getElementById('toast');
   t.textContent = msg;
@@ -832,39 +818,39 @@ function cartSubtotal(){
 function addToCart(id, qty=1){
   cart[id] = (cart[id]||0) + qty;
   if(cart[id] <= 0) delete cart[id];
-  renderAll();
+  fullRender();
 }
 function setQty(id, qty){
   if(qty<=0){ delete cart[id]; } else { cart[id]=qty; }
-  renderAll();
+  fullRender();
 }
 
-/* ============ RENDER: MENU SECTION ============ */
-function renderTabs(container, active, onClick){
+/* ============ RENDER: TABS ============ */
+function renderTabsProper(container, getActive, onClick){
   container.innerHTML = '';
   CATS.forEach(cat=>{
     const btn = document.createElement('button');
-    btn.className = 'menu-tab' + (cat===active ? ' active':'');
+    btn.className = 'menu-tab' + (cat===getActive() ? ' active':'');
     btn.textContent = cat;
     btn.addEventListener('click', ()=> onClick(cat));
     container.appendChild(btn);
   });
 }
 
+/* ============ RENDER: MENU GRID ============ */
 function renderMenuGrid(){
   const grid = document.getElementById('menuGrid');
   grid.innerHTML = '';
-  const items = MENU.filter(m => activeMenuCat==='All' || m.cat===activeMenuCat);
+  const items = MENU.filter(m => activeMenuCat==='Alle' || m.cat===activeMenuCat);
   items.forEach(item=>{
     const el = document.createElement('div');
     el.className = 'menu-item';
-    const qty = cart[item.id]||0;
     el.innerHTML = `
       <div class="menu-item-top">
         <h4>${item.name}</h4>
         <span class="price">${euro(item.price)}</span>
       </div>
-      ${item.popular ? '<span class="popular-tag">★ Guest favourite</span>' : ''}
+      ${item.popular ? '<span class="popular-tag">★ Gästeliebling</span>' : ''}
       <p class="desc">${item.desc}</p>
       <div class="menu-item-foot" data-controls="${item.id}"></div>
     `;
@@ -876,8 +862,8 @@ function renderMenuGrid(){
 function renderItemControls(container, id){
   const qty = cart[id]||0;
   if(qty===0){
-    container.innerHTML = `<span></span><button class="add-plain" data-add="${id}">Add to order</button>`;
-    container.querySelector('[data-add]').addEventListener('click', ()=>{ addToCart(id,1); toast('Added to your order'); });
+    container.innerHTML = `<span></span><button class="add-plain" data-add="${id}">Zur Bestellung hinzufügen</button>`;
+    container.querySelector('[data-add]').addEventListener('click', ()=>{ addToCart(id,1); toast('Zur Bestellung hinzugefügt'); });
   } else {
     container.innerHTML = `
       <span></span>
@@ -895,7 +881,7 @@ function renderItemControls(container, id){
 function renderOrderList(){
   const list = document.getElementById('orderList');
   list.innerHTML = '';
-  const items = MENU.filter(m => activeOrderCat==='All' || m.cat===activeOrderCat);
+  const items = MENU.filter(m => activeOrderCat==='Alle' || m.cat===activeOrderCat);
   items.forEach(item=>{
     const qty = cart[item.id]||0;
     const row = document.createElement('div');
@@ -913,8 +899,8 @@ function renderOrderList(){
     list.appendChild(row);
     const ctrlHost = row.querySelector(`[data-ctrl="${item.id}"]`);
     if(qty===0){
-      ctrlHost.innerHTML = `<button class="add-plain" data-add="${item.id}">Add</button>`;
-      ctrlHost.querySelector('[data-add]').addEventListener('click', ()=>{ addToCart(item.id,1); toast('Added to your order'); });
+      ctrlHost.innerHTML = `<button class="add-plain" data-add="${item.id}">Hinzufügen</button>`;
+      ctrlHost.querySelector('[data-add]').addEventListener('click', ()=>{ addToCart(item.id,1); toast('Zur Bestellung hinzugefügt'); });
     } else {
       ctrlHost.innerHTML = `
         <div class="qty-add">
@@ -928,7 +914,7 @@ function renderOrderList(){
   });
 }
 
-/* ============ RENDER: TICKET (cart) ============ */
+/* ============ RENDER: TICKET (Warenkorb) ============ */
 function ticketHTML(){
   const items = Object.entries(cart);
   const subtotal = cartSubtotal();
@@ -937,7 +923,7 @@ function ticketHTML(){
 
   let itemsHTML = '';
   if(items.length===0){
-    itemsHTML = `<div class="ticket-empty">Your ticket is empty.<br>Add dishes from the menu to start an order.</div>`;
+    itemsHTML = `<div class="ticket-empty">Ihr Bon ist leer.<br>Fügen Sie Gerichte aus der Speisekarte hinzu, um eine Bestellung zu starten.</div>`;
   } else {
     itemsHTML = `<div class="ticket-items">` + items.map(([id,qty])=>{
       const item = MENU.find(m=>m.id===id);
@@ -959,24 +945,24 @@ function ticketHTML(){
 
   const totalsHTML = items.length ? `
     <div class="ticket-totals">
-      <div><span>Subtotal</span><span>${euro(subtotal)}</span></div>
-      <div><span>${fulfillment==='delivery' ? 'Delivery fee' : 'Pickup fee'}</span><span>${fee ? euro(fee) : euro(0)}</span></div>
-      <div class="grand"><span>Total</span><span>${euro(total)}</span></div>
+      <div><span>Zwischensumme</span><span>${euro(subtotal)}</span></div>
+      <div><span>${fulfillment==='delivery' ? 'Liefergebühr' : 'Abholgebühr'}</span><span>${euro(fee)}</span></div>
+      <div class="grand"><span>Gesamt</span><span>${euro(total)}</span></div>
     </div>` : '';
 
   const fieldsHTML = items.length ? `
     <div class="ticket-field">
       <label>Name</label>
-      <input type="text" id="tName" placeholder="Your name">
+      <input type="text" id="tName" placeholder="Ihr Name">
     </div>
     <div class="ticket-field">
-      <label>Phone</label>
+      <label>Telefon</label>
       <input type="tel" id="tPhone" placeholder="030 000 0000">
     </div>
     ${fulfillment==='delivery' ? `
     <div class="ticket-field">
-      <label>Delivery address</label>
-      <input type="text" id="tAddress" placeholder="Street, house number, postcode">
+      <label>Lieferadresse</label>
+      <input type="text" id="tAddress" placeholder="Straße, Hausnummer, PLZ">
     </div>` : ''}
   ` : '';
 
@@ -985,19 +971,19 @@ function ticketHTML(){
     <div class="ticket-body">
       <div class="ticket-head">
         <div class="t-title">Sole</div>
-        <div class="t-sub">ORDER TICKET</div>
+        <div class="t-sub">BESTELLBON</div>
       </div>
       <div class="fulfillment-toggle">
-        <button data-fulfill="pickup" class="${fulfillment==='pickup'?'active':''}">Pickup</button>
-        <button data-fulfill="delivery" class="${fulfillment==='delivery'?'active':''}">Delivery</button>
+        <button data-fulfill="pickup" class="${fulfillment==='pickup'?'active':''}">Abholung</button>
+        <button data-fulfill="delivery" class="${fulfillment==='delivery'?'active':''}">Lieferung</button>
       </div>
       ${itemsHTML}
       ${totalsHTML}
       ${fieldsHTML}
     </div>
     <div class="ticket-footer">
-      ${items.length ? `<button class="btn btn-wine btn-full" id="checkoutBtn">Place order</button>
-      <p class="form-note" style="text-align:center;">Est. ${fulfillment==='delivery' ? '35–50 min delivery' : '20–30 min pickup'}. Payment is taken in person or by phone.</p>`
+      ${items.length ? `<button class="btn btn-wine btn-full" id="checkoutBtn">Bestellung aufgeben</button>
+      <p class="form-note" style="text-align:center;">Ca. ${fulfillment==='delivery' ? '35–50 Min. Lieferzeit' : '20–30 Min. Abholzeit'}. Bezahlung erfolgt vor Ort oder telefonisch. Die Bestellung wird per E-Mail an das Restaurant gesendet.</p>`
       : `<div class="barcode"></div>`}
     </div>
   `;
@@ -1005,7 +991,7 @@ function ticketHTML(){
 
 function bindTicketEvents(host){
   host.querySelectorAll('[data-fulfill]').forEach(btn=>{
-    btn.addEventListener('click', ()=>{ fulfillment = btn.getAttribute('data-fulfill'); renderAll(); });
+    btn.addEventListener('click', ()=>{ fulfillment = btn.getAttribute('data-fulfill'); fullRender(); });
   });
   host.querySelectorAll('[data-t-minus]').forEach(btn=>{
     btn.addEventListener('click', ()=>{ const id=btn.getAttribute('data-t-minus'); setQty(id,(cart[id]||0)-1); });
@@ -1020,32 +1006,56 @@ function bindTicketEvents(host){
       const phone = host.querySelector('#tPhone')?.value.trim();
       const address = host.querySelector('#tAddress')?.value.trim();
       if(!name || !phone || (fulfillment==='delivery' && !address)){
-        toast('Please fill in your details first');
+        toast('Bitte füllen Sie zuerst Ihre Daten aus');
         return;
       }
       const orderNum = 'S-' + Math.floor(1000+Math.random()*9000);
       const subtotal = cartSubtotal();
       const fee = fulfillment==='delivery' ? DELIVERY_FEE : 0;
+
+      const itemLines = Object.entries(cart).map(([id,qty])=>{
+        const item = MENU.find(m=>m.id===id);
+        return `  ${qty}x ${item.name} — ${euro(item.price*qty)}`;
+      });
+
+      openMailto('Neue Online-Bestellung ' + orderNum, [
+        'Neue Bestellung über die Website:',
+        '',
+        'Bestellnummer: ' + orderNum,
+        'Name: ' + name,
+        'Telefon: ' + phone,
+        fulfillment==='delivery' ? 'Art: Lieferung' : 'Art: Abholung',
+        fulfillment==='delivery' ? 'Lieferadresse: ' + address : '',
+        '',
+        'Artikel:',
+        ...itemLines,
+        '',
+        'Zwischensumme: ' + euro(subtotal),
+        (fulfillment==='delivery' ? 'Liefergebühr: ' : 'Abholgebühr: ') + euro(fee),
+        'Gesamt: ' + euro(subtotal+fee)
+      ].filter(Boolean));
+
       host.innerHTML = `
         <div class="ticket-notch"></div>
         <div class="ticket-body confirm-panel">
-          <div class="stamp">CONFIRMED</div>
-          <h3>Order ${orderNum}</h3>
-          <p style="color:var(--ink-soft);font-size:0.85rem;">Thanks, ${name.split(' ')[0]} — Sole has your order.</p>
+          <div class="stamp">BESTÄTIGT</div>
+          <h3>Bestellung ${orderNum}</h3>
+          <p style="color:var(--ink-soft);font-size:0.85rem;">Danke, ${name.split(' ')[0]} — Ihre Bestellung wurde per E-Mail an Sole gesendet.</p>
           <div class="confirm-detail">
-            <div><span>Method</span><span>${fulfillment==='delivery'?'Delivery':'Pickup'}</span></div>
-            <div><span>Items</span><span>${cartCount()}</span></div>
-            <div><span>Subtotal</span><span>${euro(subtotal)}</span></div>
-            <div><span>Fee</span><span>${euro(fee)}</span></div>
-            <div><span>Total</span><span>${euro(subtotal+fee)}</span></div>
-            <div><span>Est. time</span><span>${fulfillment==='delivery' ? '35–50 min' : '20–30 min'}</span></div>
+            <div><span>Methode</span><span>${fulfillment==='delivery'?'Lieferung':'Abholung'}</span></div>
+            <div><span>Artikel</span><span>${cartCount()}</span></div>
+            <div><span>Zwischensumme</span><span>${euro(subtotal)}</span></div>
+            <div><span>Gebühr</span><span>${euro(fee)}</span></div>
+            <div><span>Gesamt</span><span>${euro(subtotal+fee)}</span></div>
+            <div><span>Voraussichtl. Zeit</span><span>${fulfillment==='delivery' ? '35–50 Min.' : '20–30 Min.'}</span></div>
           </div>
-          <button class="btn btn-line btn-full" id="newOrderBtn">Start a new order</button>
+          <p class="form-note">Falls sich Ihr E-Mail-Programm nicht automatisch geöffnet hat, rufen Sie uns bitte kurz an: 030 89740395.</p>
+          <button class="btn btn-line btn-full" id="newOrderBtn">Neue Bestellung starten</button>
         </div>
         <div class="ticket-footer"><div class="barcode"></div></div>
       `;
-      host.querySelector('#newOrderBtn').addEventListener('click', ()=>{ cart = {}; renderAll(); });
-      toast('Order sent to the kitchen 🍕');
+      host.querySelector('#newOrderBtn').addEventListener('click', ()=>{ cart = {}; fullRender(); });
+      toast('Bestellung an die Küche gesendet 🍕');
     });
   }
 }
@@ -1055,13 +1065,11 @@ function renderTicket(){
   wrap.innerHTML = `<div class="ticket">${ticketHTML()}</div>`;
   bindTicketEvents(wrap);
 
-  // mirror into drawer for mobile quick-view
   const drawerBody = document.getElementById('drawerBody');
   drawerBody.innerHTML = `<div class="ticket" style="box-shadow:none;border:none;">${ticketHTML()}</div>`;
   bindTicketEvents(drawerBody);
 }
 
-/* ============ RENDER: CART COUNT ============ */
 function renderCartCount(){
   const el = document.getElementById('cartCount');
   const n = cartCount();
@@ -1069,32 +1077,11 @@ function renderCartCount(){
   el.classList.toggle('vh', n===0);
 }
 
-/* ============ RENDER ALL ============ */
-function renderAll(){
-  renderTabs(document.getElementById('menuTabs'), activeMenuCat, (c)=>{ activeMenuCat=c; renderMenuGrid(); renderTabs(document.getElementById('menuTabs'), activeMenuCat, arguments.callee); });
-  renderMenuGrid();
-  renderTabs(document.getElementById('orderTabs'), activeOrderCat, (c)=>{ activeOrderCat=c; renderOrderList(); renderTabs(document.getElementById('orderTabs'), activeOrderCat, arguments.callee); });
-  renderOrderList();
-  renderTicket();
-  renderCartCount();
-}
-
-/* proper tab click wiring (avoid arguments.callee pitfalls) */
+/* ============ WIRE + RENDER ALL ============ */
 function wireTabs(){
-  renderTabsProper(document.getElementById('menuTabs'), () => activeMenuCat, (c)=>{ activeMenuCat=c; renderMenuGrid(); wireTabs(); });
-  renderTabsProper(document.getElementById('orderTabs'), () => activeOrderCat, (c)=>{ activeOrderCat=c; renderOrderList(); wireTabs(); });
+  renderTabsProper(document.getElementById('menuTabs'), () => activeMenuCat, (c)=>{ activeMenuCat=c; fullRender(); });
+  renderTabsProper(document.getElementById('orderTabs'), () => activeOrderCat, (c)=>{ activeOrderCat=c; fullRender(); });
 }
-function renderTabsProper(container, getActive, onClick){
-  container.innerHTML = '';
-  CATS.forEach(cat=>{
-    const btn = document.createElement('button');
-    btn.className = 'menu-tab' + (cat===getActive() ? ' active':'');
-    btn.textContent = cat;
-    btn.addEventListener('click', ()=> onClick(cat));
-    container.appendChild(btn);
-  });
-}
-
 function fullRender(){
   wireTabs();
   renderMenuGrid();
@@ -1121,27 +1108,42 @@ document.getElementById('reserveForm').addEventListener('submit', (e)=>{
   const time = document.getElementById('rTime').value;
   const email = document.getElementById('rEmail').value.trim();
   const phone = document.getElementById('rPhone').value.trim();
-  if(!name || !date || !time || !email || !phone){ toast('Please complete all required fields'); return; }
+  const notes = document.getElementById('rNotes').value.trim();
+  if(!name || !date || !time || !email || !phone){ toast('Bitte füllen Sie alle Pflichtfelder aus'); return; }
+
+  const dateObj = new Date(date + 'T00:00:00');
+  const dateStr = dateObj.toLocaleDateString('de-DE', {weekday:'long', day:'numeric', month:'long'});
+
+  openMailto('Neue Tischreservierung – ' + name, [
+    'Neue Reservierungsanfrage über die Website:',
+    '',
+    'Name: ' + name,
+    'Telefon: ' + phone,
+    'E-Mail: ' + email,
+    'Datum: ' + dateStr,
+    'Uhrzeit: ' + time,
+    'Gäste: ' + guestCount,
+    'Anmerkungen: ' + (notes || '—')
+  ]);
 
   const card = document.getElementById('reserveCard');
-  const dateObj = new Date(date + 'T00:00:00');
-  const dateStr = dateObj.toLocaleDateString('en-GB', {weekday:'long', day:'numeric', month:'long'});
   card.innerHTML = `
     <div class="confirm-panel">
-      <div class="stamp">REQUESTED</div>
-      <h3>Table for ${guestCount} requested</h3>
-      <p style="color:var(--ink-soft);font-size:0.9rem;">Thanks, ${name.split(' ')[0]} — Sole will confirm shortly by phone or email.</p>
+      <div class="stamp">ANGEFRAGT</div>
+      <h3>Tisch für ${guestCount} angefragt</h3>
+      <p style="color:var(--ink-soft);font-size:0.9rem;">Danke, ${name.split(' ')[0]} — Ihre Anfrage wurde per E-Mail an Sole gesendet. Sie erhalten in Kürze eine Bestätigung per Telefon oder E-Mail.</p>
       <div class="confirm-detail">
-        <div><span>Date</span><span>${dateStr}</span></div>
-        <div><span>Time</span><span>${time}</span></div>
-        <div><span>Guests</span><span>${guestCount}</span></div>
-        <div><span>Contact</span><span>${phone}</span></div>
+        <div><span>Datum</span><span>${dateStr}</span></div>
+        <div><span>Uhrzeit</span><span>${time}</span></div>
+        <div><span>Gäste</span><span>${guestCount}</span></div>
+        <div><span>Kontakt</span><span>${phone}</span></div>
       </div>
-      <button class="btn btn-line btn-full" id="newReserveBtn">Make another request</button>
+      <p class="form-note">Falls sich Ihr E-Mail-Programm nicht automatisch geöffnet hat, rufen Sie uns bitte kurz an: 030 89740395.</p>
+      <button class="btn btn-line btn-full" id="newReserveBtn">Neue Anfrage stellen</button>
     </div>
   `;
   document.getElementById('newReserveBtn').addEventListener('click', ()=> location.reload());
-  toast('Reservation request sent');
+  toast('Reservierungsanfrage gesendet');
 });
 
 /* ============ CART DRAWER + NAV ============ */
@@ -1163,8 +1165,6 @@ document.getElementById('hamburgerBtn').addEventListener('click', ()=>{
 });
 
 /* ============ INIT ============ */
-// replace faulty renderAll with fullRender-based flow
-renderAll = fullRender;
 document.getElementById('rDate').min = new Date().toISOString().split('T')[0];
 fullRender();
 </script>
