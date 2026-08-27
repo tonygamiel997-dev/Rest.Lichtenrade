@@ -768,11 +768,27 @@
 <div class="toast" id="toast"></div>
 
 <script>
-/* ============ EMAIL TARGET ============ */
-const RESTAURANT_EMAIL = 'tonygamiel997@gmail.com';
-function openMailto(subject, bodyLines){
-  const url = `mailto:${RESTAURANT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
-  window.location.href = url;
+/* ============ DIRECT EMAIL — sent from the website, no redirect ============
+   This POSTs straight to a Google Apps Script endpoint, which sends the
+   email itself from Google's servers and logs the entry to your Sheet.
+   Paste your Apps Script /exec URL below (see setup steps you were given).
+   Until this is filled in, submissions are NOT sent anywhere — you must
+   add this URL for orders/reservations to reach you. */
+const GOOGLE_SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
+
+function isConfigured(){
+  return !!GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.indexOf('PASTE_YOUR') !== 0;
+}
+
+// Sends the data directly from the browser to your Apps Script endpoint.
+// No page redirect, no email app involved — the script sends the email itself.
+function sendToRestaurant(payload){
+  if(!isConfigured()) return Promise.resolve(false);
+  return fetch(GOOGLE_SCRIPT_URL, {
+    method: 'POST',
+    headers: {'Content-Type': 'text/plain;charset=utf-8'},
+    body: JSON.stringify(payload)
+  }).then(()=> true).catch(()=> false);
 }
 
 /* ============ DATA ============ */
@@ -1013,49 +1029,49 @@ function bindTicketEvents(host){
       const subtotal = cartSubtotal();
       const fee = fulfillment==='delivery' ? DELIVERY_FEE : 0;
 
-      const itemLines = Object.entries(cart).map(([id,qty])=>{
+      const itemsSummary = Object.entries(cart).map(([id,qty])=>{
         const item = MENU.find(m=>m.id===id);
-        return `  ${qty}x ${item.name} — ${euro(item.price*qty)}`;
-      });
+        return `${qty}x ${item.name}`;
+      }).join(', ');
 
-      openMailto('Neue Online-Bestellung ' + orderNum, [
-        'Neue Bestellung über die Website:',
-        '',
-        'Bestellnummer: ' + orderNum,
-        'Name: ' + name,
-        'Telefon: ' + phone,
-        fulfillment==='delivery' ? 'Art: Lieferung' : 'Art: Abholung',
-        fulfillment==='delivery' ? 'Lieferadresse: ' + address : '',
-        '',
-        'Artikel:',
-        ...itemLines,
-        '',
-        'Zwischensumme: ' + euro(subtotal),
-        (fulfillment==='delivery' ? 'Liefergebühr: ' : 'Abholgebühr: ') + euro(fee),
-        'Gesamt: ' + euro(subtotal+fee)
-      ].filter(Boolean));
+      checkoutBtn.disabled = true;
+      checkoutBtn.textContent = 'Wird gesendet …';
 
-      host.innerHTML = `
-        <div class="ticket-notch"></div>
-        <div class="ticket-body confirm-panel">
-          <div class="stamp">BESTÄTIGT</div>
-          <h3>Bestellung ${orderNum}</h3>
-          <p style="color:var(--ink-soft);font-size:0.85rem;">Danke, ${name.split(' ')[0]} — Ihre Bestellung wurde per E-Mail an Sole gesendet.</p>
-          <div class="confirm-detail">
-            <div><span>Methode</span><span>${fulfillment==='delivery'?'Lieferung':'Abholung'}</span></div>
-            <div><span>Artikel</span><span>${cartCount()}</span></div>
-            <div><span>Zwischensumme</span><span>${euro(subtotal)}</span></div>
-            <div><span>Gebühr</span><span>${euro(fee)}</span></div>
-            <div><span>Gesamt</span><span>${euro(subtotal+fee)}</span></div>
-            <div><span>Voraussichtl. Zeit</span><span>${fulfillment==='delivery' ? '35–50 Min.' : '20–30 Min.'}</span></div>
+      sendToRestaurant({
+        type: 'Bestellung',
+        name: name,
+        phone: phone,
+        email: '',
+        when: fulfillment==='delivery' ? ('Lieferung – ' + address) : 'Abholung',
+        items: itemsSummary,
+        total: euro(subtotal+fee),
+        notes: 'Bestellnummer ' + orderNum
+      }).then(function(sent){
+        const statusBlock = sent
+          ? `<p style="color:var(--ink-soft);font-size:0.85rem;">Danke, ${name.split(' ')[0]} — Ihre Bestellung wurde direkt an Sole gesendet.</p>`
+          : `<p style="color:var(--wine);font-size:0.85rem;">Die Bestellung konnte nicht automatisch gesendet werden — bitte rufen Sie uns an: 030 89740395.</p>`;
+
+        host.innerHTML = `
+          <div class="ticket-notch"></div>
+          <div class="ticket-body confirm-panel">
+            <div class="stamp">${sent ? 'BESTÄTIGT' : 'NICHT GESENDET'}</div>
+            <h3>Bestellung ${orderNum}</h3>
+            ${statusBlock}
+            <div class="confirm-detail">
+              <div><span>Methode</span><span>${fulfillment==='delivery'?'Lieferung':'Abholung'}</span></div>
+              <div><span>Artikel</span><span>${cartCount()}</span></div>
+              <div><span>Zwischensumme</span><span>${euro(subtotal)}</span></div>
+              <div><span>Gebühr</span><span>${euro(fee)}</span></div>
+              <div><span>Gesamt</span><span>${euro(subtotal+fee)}</span></div>
+              <div><span>Voraussichtl. Zeit</span><span>${fulfillment==='delivery' ? '35–50 Min.' : '20–30 Min.'}</span></div>
+            </div>
+            <button class="btn btn-line btn-full" id="newOrderBtn">Neue Bestellung starten</button>
           </div>
-          <p class="form-note">Falls sich Ihr E-Mail-Programm nicht automatisch geöffnet hat, rufen Sie uns bitte kurz an: 030 89740395.</p>
-          <button class="btn btn-line btn-full" id="newOrderBtn">Neue Bestellung starten</button>
-        </div>
-        <div class="ticket-footer"><div class="barcode"></div></div>
-      `;
-      host.querySelector('#newOrderBtn').addEventListener('click', ()=>{ cart = {}; fullRender(); });
-      toast('Bestellung an die Küche gesendet 🍕');
+          <div class="ticket-footer"><div class="barcode"></div></div>
+        `;
+        host.querySelector('#newOrderBtn').addEventListener('click', ()=>{ cart = {}; fullRender(); });
+        toast(sent ? 'Bestellung an die Küche gesendet 🍕' : 'Senden fehlgeschlagen — bitte anrufen');
+      });
     });
   }
 }
@@ -1114,36 +1130,42 @@ document.getElementById('reserveForm').addEventListener('submit', (e)=>{
   const dateObj = new Date(date + 'T00:00:00');
   const dateStr = dateObj.toLocaleDateString('de-DE', {weekday:'long', day:'numeric', month:'long'});
 
-  openMailto('Neue Tischreservierung – ' + name, [
-    'Neue Reservierungsanfrage über die Website:',
-    '',
-    'Name: ' + name,
-    'Telefon: ' + phone,
-    'E-Mail: ' + email,
-    'Datum: ' + dateStr,
-    'Uhrzeit: ' + time,
-    'Gäste: ' + guestCount,
-    'Anmerkungen: ' + (notes || '—')
-  ]);
+  const submitBtn = document.querySelector('#reserveForm button[type="submit"]');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Wird gesendet …';
 
-  const card = document.getElementById('reserveCard');
-  card.innerHTML = `
-    <div class="confirm-panel">
-      <div class="stamp">ANGEFRAGT</div>
-      <h3>Tisch für ${guestCount} angefragt</h3>
-      <p style="color:var(--ink-soft);font-size:0.9rem;">Danke, ${name.split(' ')[0]} — Ihre Anfrage wurde per E-Mail an Sole gesendet. Sie erhalten in Kürze eine Bestätigung per Telefon oder E-Mail.</p>
-      <div class="confirm-detail">
-        <div><span>Datum</span><span>${dateStr}</span></div>
-        <div><span>Uhrzeit</span><span>${time}</span></div>
-        <div><span>Gäste</span><span>${guestCount}</span></div>
-        <div><span>Kontakt</span><span>${phone}</span></div>
+  sendToRestaurant({
+    type: 'Reservierung',
+    name: name,
+    phone: phone,
+    email: email,
+    when: dateStr + ', ' + time + ' Uhr',
+    items: '',
+    total: '',
+    notes: (guestCount + ' Gäste') + (notes ? ' — ' + notes : '')
+  }).then(function(sent){
+    const statusBlock = sent
+      ? `<p style="color:var(--ink-soft);font-size:0.9rem;">Danke, ${name.split(' ')[0]} — Ihre Anfrage wurde direkt an Sole gesendet. Sie erhalten in Kürze eine Bestätigung per Telefon oder E-Mail.</p>`
+      : `<p style="color:var(--wine);font-size:0.9rem;">Die Anfrage konnte nicht automatisch gesendet werden — bitte rufen Sie uns an: 030 89740395.</p>`;
+
+    const card = document.getElementById('reserveCard');
+    card.innerHTML = `
+      <div class="confirm-panel">
+        <div class="stamp">${sent ? 'ANGEFRAGT' : 'NICHT GESENDET'}</div>
+        <h3>Tisch für ${guestCount} angefragt</h3>
+        ${statusBlock}
+        <div class="confirm-detail">
+          <div><span>Datum</span><span>${dateStr}</span></div>
+          <div><span>Uhrzeit</span><span>${time}</span></div>
+          <div><span>Gäste</span><span>${guestCount}</span></div>
+          <div><span>Kontakt</span><span>${phone}</span></div>
+        </div>
+        <button class="btn btn-line btn-full" id="newReserveBtn">Neue Anfrage stellen</button>
       </div>
-      <p class="form-note">Falls sich Ihr E-Mail-Programm nicht automatisch geöffnet hat, rufen Sie uns bitte kurz an: 030 89740395.</p>
-      <button class="btn btn-line btn-full" id="newReserveBtn">Neue Anfrage stellen</button>
-    </div>
-  `;
-  document.getElementById('newReserveBtn').addEventListener('click', ()=> location.reload());
-  toast('Reservierungsanfrage gesendet');
+    `;
+    document.getElementById('newReserveBtn').addEventListener('click', ()=> location.reload());
+    toast(sent ? 'Reservierungsanfrage gesendet' : 'Senden fehlgeschlagen — bitte anrufen');
+  });
 });
 
 /* ============ CART DRAWER + NAV ============ */
