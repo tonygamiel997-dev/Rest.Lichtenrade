@@ -808,10 +808,10 @@
    Paste your Apps Script /exec URL below (see setup steps you were given).
    Until this is filled in, submissions are NOT sent anywhere — you must
    add this URL for orders/reservations to reach you. */
-const GOOGLE_SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwEU7bgLTCJCtSvSe8QhmMttiRgpmB-4EB3FcPBaDqGaA3xP5C0O36r65Nk2G5EtPmu9Q/exec';
 
 function isConfigured(){
-  return !!GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.indexOf('PASTE_YOUR') !== 0;
+  return !!GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.indexOf('https://script.google.com/macros/s/AKfycbwEU7bgLTCJCtSvSe8QhmMttiRgpmB-4EB3FcPBaDqGaA3xP5C0O36r65Nk2G5EtPmu9Q/exec') !== 0;
 }
 
 // Sends the data directly from the browser to your Apps Script endpoint.
