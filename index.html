@@ -3,11 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ristorante Sole — Berlin</title>
+<title>Ristorante Sole Berlin | Italienisches Restaurant &amp; Pizzeria in Tempelhof-Schöneberg</title>
+<meta name="description" content="Ristorante Sole in Berlin-Tempelhof: handgemachte Pizza aus dem Holzofen, frische Pasta und italienische Klassiker. Tisch reservieren oder online bestellen — Abholung & Lieferung.">
+<meta name="theme-color" content="#1F3D33">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%231F3D33'/%3E%3Ccircle cx='50' cy='50' r='30' fill='%238B2E28' opacity='0.5'/%3E%3Ccircle cx='38' cy='38' r='5' fill='%23C99A44'/%3E%3Ccircle cx='62' cy='45' r='4' fill='%23C99A44'/%3E%3Ccircle cx='48' cy='62' r='4.5' fill='%23C99A44'/%3E%3C/svg%3E">
+<meta property="og:title" content="Ristorante Sole Berlin — Pizza & Pasta in Tempelhof-Schöneberg">
+<meta property="og:description" content="Handgemachte Pizza aus dem Holzofen, frische Pasta, 4,7★ bei 938 Bewertungen. Jetzt Tisch reservieren oder online bestellen.">
+<meta property="og:type" content="restaurant.restaurant">
+<meta property="og:locale" content="de_DE">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Work+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
+  .legal-overlay{
+    position:fixed;inset:0;background:rgba(28,20,16,0.55);z-index:150;
+    display:none;align-items:center;justify-content:center;padding:24px;
+  }
+  .legal-overlay.open{display:flex;}
+  .legal-modal{
+    background:var(--cream);max-width:640px;width:100%;max-height:82vh;overflow-y:auto;
+    border-radius:4px;padding:44px;position:relative;
+  }
+  .legal-modal h3{font-size:1.6rem;margin-bottom:20px;}
+  .legal-modal h4{font-family:'Work Sans',sans-serif;font-size:0.95rem;margin:22px 0 8px;font-weight:700;}
+  .legal-modal p, .legal-modal li{font-size:0.92rem;line-height:1.7;color:var(--ink-soft);}
+  .legal-modal .legal-close{
+    position:absolute;top:20px;right:20px;background:none;border:none;font-size:1.6rem;line-height:1;color:var(--ink);
+  }
+  .legal-placeholder{
+    background:var(--cream-dk);border:1px dashed var(--gold);padding:12px 16px;font-family:'Space Mono',monospace;
+    font-size:0.78rem;color:var(--wine);margin:14px 0;border-radius:2px;
+  }
   :root{
     --forest:#1F3D33;
     --forest-dk:#152A23;
@@ -751,10 +777,18 @@
     </div>
     <div class="foot-bottom">
       <span>© 2026 Ristorante Sole, Berlin</span>
-      <span>4,7 ★ · 938 Google-Bewertungen · 20–30 € pro Person</span>
+      <span style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;">
+        <button class="legal-trigger" data-legal="impressum" style="background:none;border:none;color:inherit;text-decoration:underline;cursor:pointer;font-size:inherit;padding:0;">Impressum</button>
+        <button class="legal-trigger" data-legal="datenschutz" style="background:none;border:none;color:inherit;text-decoration:underline;cursor:pointer;font-size:inherit;padding:0;">Datenschutz</button>
+        <span>4,7 ★ · 938 Google-Bewertungen · 20–30 € pro Person</span>
+      </span>
     </div>
   </div>
 </footer>
+
+<div class="legal-overlay" id="legalOverlay">
+  <div class="legal-modal" id="legalModal"></div>
+</div>
 
 <div class="drawer-overlay" id="drawerOverlay"></div>
 <div class="drawer" id="drawer">
@@ -1184,6 +1218,49 @@ document.getElementById('hamburgerBtn').addEventListener('click', ()=>{
   const isOpen = links.style.display === 'flex';
   links.style.display = isOpen ? 'none' : 'flex';
   links.style.cssText += isOpen ? '' : 'position:absolute;top:100%;left:0;right:0;background:var(--cream);flex-direction:column;padding:20px 32px;gap:16px;border-bottom:1px solid var(--line);';
+});
+
+/* ============ LEGAL MODALS (Impressum / Datenschutz) ============ */
+const LEGAL_CONTENT = {
+  impressum: `
+    <h3>Impressum</h3>
+    <p>Angaben gemäß § 5 TMG</p>
+    <div class="legal-placeholder">⚠️ Platzhalter — bitte durch Ihre echten Angaben ersetzen: Inhaber/Geschäftsführer, ggf. Handelsregisternummer, USt-IdNr.</div>
+    <h4>Betreiber</h4>
+    <p>Ristorante Sole<br>Lichtenrader Damm 67<br>12305 Berlin</p>
+    <h4>Kontakt</h4>
+    <p>Telefon: 030 89740395<br>E-Mail: tonygamiel997@gmail.com</p>
+    <h4>Verantwortlich für den Inhalt</h4>
+    <p>[Name des Inhabers/der Inhaberin einsetzen]</p>
+    <h4>Streitschlichtung</h4>
+    <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit. Wir sind nicht verpflichtet und nicht bereit, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+  `,
+  datenschutz: `
+    <h3>Datenschutzerklärung</h3>
+    <h4>1. Verantwortlicher</h4>
+    <p>Ristorante Sole, Lichtenrader Damm 67, 12305 Berlin, tonygamiel997@gmail.com</p>
+    <h4>2. Erhobene Daten</h4>
+    <p>Wenn Sie über diese Website einen Tisch reservieren oder eine Bestellung aufgeben, verarbeiten wir die von Ihnen eingegebenen Daten (Name, Telefon, ggf. E-Mail und Adresse) ausschließlich zur Bearbeitung Ihrer Anfrage.</p>
+    <h4>3. Weitergabe der Daten</h4>
+    <p>Ihre Angaben werden zur Bearbeitung an einen Tabellendienst (Google Sheets/Google Apps Script) sowie per E-Mail an das Restaurant übermittelt. Eine Weitergabe an sonstige Dritte erfolgt nicht.</p>
+    <h4>4. Speicherdauer</h4>
+    <p>Die Daten werden nur so lange gespeichert, wie es für die Bearbeitung Ihrer Reservierung oder Bestellung erforderlich ist.</p>
+    <h4>5. Ihre Rechte</h4>
+    <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer Daten. Wenden Sie sich hierzu an die oben genannte Kontaktadresse.</p>
+    <div class="legal-placeholder">⚠️ Platzhalter — diese Erklärung deckt die Grundlagen ab, ersetzt aber keine Rechtsberatung. Für eine rechtssichere Fassung empfiehlt sich die Prüfung durch einen Anwalt oder einen Datenschutzgenerator.</div>
+  `
+};
+function openLegal(key){
+  document.getElementById('legalModal').innerHTML = `<button class="legal-close" id="legalClose" aria-label="Schließen">×</button>` + LEGAL_CONTENT[key];
+  document.getElementById('legalOverlay').classList.add('open');
+  document.getElementById('legalClose').addEventListener('click', closeLegal);
+}
+function closeLegal(){ document.getElementById('legalOverlay').classList.remove('open'); }
+document.querySelectorAll('.legal-trigger').forEach(btn=>{
+  btn.addEventListener('click', ()=> openLegal(btn.getAttribute('data-legal')));
+});
+document.getElementById('legalOverlay').addEventListener('click', (e)=>{
+  if(e.target.id === 'legalOverlay') closeLegal();
 });
 
 /* ============ INIT ============ */
